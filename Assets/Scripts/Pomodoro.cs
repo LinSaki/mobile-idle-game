@@ -25,7 +25,6 @@ public class Pomodoro : MonoBehaviour
     Coroutine timerRoutine = null;
 
     private float remainingTime;
-    private const float baseInterval = 1f; // 1 second intervals
 
     private void Start()
     {
@@ -34,15 +33,12 @@ public class Pomodoro : MonoBehaviour
 
     IEnumerator CountdownCoroutine()
     {
-        //float waitTime = baseInterval / countdownSpeed;
-
         while(remainingTime > 0)
         {
             yield return new WaitForSeconds(countdownSpeed);
             remainingTime -= countdownSpeed;
             UpdateTimerText();
         }
-        //TimerFinished();
     }
 
     private void PomodoroTime()
