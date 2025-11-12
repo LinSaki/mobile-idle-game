@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pomodoro : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Pomodoro : MonoBehaviour
 
     [Header("Timer UI")]
     [SerializeField] private TextMeshProUGUI timerText = null;
+    [SerializeField] private Button pauseButton;
+    [SerializeField] private Button breakButton;
+    [SerializeField] private Button focusButtonn;
     [SerializeField] private GameObject pomodorPanel;
     [SerializeField] private GameObject breakPanel;
     [SerializeField] private GameObject sunsetBackground;
