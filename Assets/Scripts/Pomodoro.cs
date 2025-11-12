@@ -22,6 +22,7 @@ public class Pomodoro : MonoBehaviour
     [SerializeField] private GameObject breakPanel;
     [SerializeField] private GameObject sunsetBackground;
     [SerializeField] private GameObject starlightBackground;
+    Coroutine timerRoutine = null;
 
     private float remainingTime;
     private const float baseInterval = 1f; // 1 second intervals
@@ -33,29 +34,29 @@ public class Pomodoro : MonoBehaviour
 
     IEnumerator CountdownCoroutine()
     {
-        float waitTime = baseInterval / countdownSpeed;
+        //float waitTime = baseInterval / countdownSpeed;
 
         while(remainingTime > 0)
         {
-            yield return new WaitForSeconds(waitTime);
-            remainingTime -= baseInterval;
+            yield return new WaitForSeconds(countdownSpeed);
+            remainingTime -= countdownSpeed;
             UpdateTimerText();
         }
-        TimerFinished();
+        //TimerFinished();
     }
 
     private void PomodoroTime()
     {
         remainingTime = timerStart;
         UpdateTimerText();
-        StartCoroutine(CountdownCoroutine());
+        timerRoutine = StartCoroutine(CountdownCoroutine());
     }
 
     private void BreakTime()
     {
         remainingTime = breakTimerStart;
         UpdateTimerText();
-        StartCoroutine(CountdownCoroutine());
+        timerRoutine = StartCoroutine(CountdownCoroutine());
     }
 
     string FormatTime(float timeLength)
@@ -74,7 +75,7 @@ public class Pomodoro : MonoBehaviour
     private void TimerFinished()
     {
         Debug.Log("Timer finished!");
-        StopCoroutine(CountdownCoroutine());
+        StopCoroutine(timerRoutine);
         if (pomodorPanel.activeInHierarchy == true)
         {
             setBreakPanel();
@@ -111,4 +112,8 @@ public class Pomodoro : MonoBehaviour
         else
             pauseText.text = "||";
     }
+
+    public void StartPomodoro() => TimerFinished();
+
+    public void StartBreak() => TimerFinished();
 }

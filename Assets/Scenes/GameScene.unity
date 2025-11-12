@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 111437595}
   - component: {fileID: 111437597}
   - component: {fileID: 111437596}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Sunset_Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 112017415}
   - component: {fileID: 112017417}
   - component: {fileID: 112017416}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 303808560}
   - component: {fileID: 303808562}
   - component: {fileID: 303808561}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Break_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303808559}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 309424177}
   - component: {fileID: 309424176}
   - component: {fileID: 309424175}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Nighttime_Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 316915490}
   - component: {fileID: 316915492}
   - component: {fileID: 316915491}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Break_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 338413014}
   - component: {fileID: 338413013}
   - component: {fileID: 338413012}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pause_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,11 +738,11 @@ RectTransform:
   - {fileID: 1067901572}
   m_Father: {fileID: 377225652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 226, y: 478.1}
-  m_SizeDelta: {x: 108.881, y: 84.829}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 203, y: -24}
+  m_SizeDelta: {x: 108.881, y: 84.82898}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &340223916
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +754,7 @@ GameObject:
   - component: {fileID: 340223917}
   - component: {fileID: 340223919}
   - component: {fileID: 340223918}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pomodoro_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -769,7 +769,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340223916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 343726371}
   - component: {fileID: 343726373}
   - component: {fileID: 343726372}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pom_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 377225650}
   - component: {fileID: 377225649}
   - component: {fileID: 377225648}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UI_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +993,7 @@ MonoBehaviour:
   countdownSpeed: 1
   timerText: {fileID: 536797767}
   pauseButton: {fileID: 338413012}
-  pauseText: {fileID: 0}
+  pauseText: {fileID: 1067901573}
   breakButton: {fileID: 1718396409}
   focusButtonn: {fileID: 1245459290}
   pomodorPanel: {fileID: 340223916}
@@ -1061,7 +1061,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &377225652
 RectTransform:
@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 536797769}
   - component: {fileID: 536797768}
   - component: {fileID: 536797767}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1370,7 +1370,7 @@ GameObject:
   - component: {fileID: 576186467}
   - component: {fileID: 576186469}
   - component: {fileID: 576186468}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1608,7 +1608,7 @@ GameObject:
   - component: {fileID: 704129171}
   - component: {fileID: 704129173}
   - component: {fileID: 704129172}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1683,7 +1683,7 @@ GameObject:
   - component: {fileID: 873391969}
   - component: {fileID: 873391971}
   - component: {fileID: 873391970}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1758,7 +1758,7 @@ GameObject:
   - component: {fileID: 1067901572}
   - component: {fileID: 1067901574}
   - component: {fileID: 1067901573}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pause_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1894,7 +1894,7 @@ GameObject:
   - component: {fileID: 1102947752}
   - component: {fileID: 1102947754}
   - component: {fileID: 1102947753}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1970,7 +1970,7 @@ GameObject:
   - component: {fileID: 1185701466}
   - component: {fileID: 1185701465}
   - component: {fileID: 1185701464}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2073,7 +2073,7 @@ GameObject:
   - component: {fileID: 1245459289}
   - component: {fileID: 1245459288}
   - component: {fileID: 1245459290}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pomodor_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2159,10 +2159,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.9333334, g: 0.63529414, b: 0.4901961, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.8980393, g: 0.60784316, b: 0.4666667, a: 1}
+    m_HighlightedColor: {r: 0.8018868, g: 0.54488415, b: 0.41985583, a: 1}
+    m_PressedColor: {r: 0.8980393, g: 0.60784316, b: 0.4666667, a: 1}
+    m_SelectedColor: {r: 0.8980393, g: 0.60784316, b: 0.4666667, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2181,7 +2181,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1245459288}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 377225648}
+        m_TargetAssemblyTypeName: Pomodoro, Assembly-CSharp
+        m_MethodName: StartPomodoro
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1280979073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,7 +2205,7 @@ GameObject:
   - component: {fileID: 1280979074}
   - component: {fileID: 1280979076}
   - component: {fileID: 1280979075}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2268,7 +2280,7 @@ GameObject:
   - component: {fileID: 1429461285}
   - component: {fileID: 1429461287}
   - component: {fileID: 1429461286}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2343,7 +2355,7 @@ GameObject:
   - component: {fileID: 1622165187}
   - component: {fileID: 1622165189}
   - component: {fileID: 1622165188}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pomodoro_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2480,7 +2492,7 @@ GameObject:
   - component: {fileID: 1718396408}
   - component: {fileID: 1718396407}
   - component: {fileID: 1718396409}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Break_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2567,9 +2579,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.9333334, g: 0.63529414, b: 0.4901961, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8396226, g: 0.56526273, b: 0.43169275, a: 1}
+    m_PressedColor: {r: 0.9333334, g: 0.63529414, b: 0.4901961, a: 1}
+    m_SelectedColor: {r: 0.9333334, g: 0.63529414, b: 0.4901961, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2588,7 +2600,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1718396407}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 377225648}
+        m_TargetAssemblyTypeName: Pomodoro, Assembly-CSharp
+        m_MethodName: StartBreak
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1998023603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,7 +2624,7 @@ GameObject:
   - component: {fileID: 1998023604}
   - component: {fileID: 1998023606}
   - component: {fileID: 1998023605}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background_1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2623,7 +2647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.907, y: -133.206}
+  m_AnchoredPosition: {x: -3.4575, y: -138.82}
   m_SizeDelta: {x: 1913.085, y: 811.365}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1998023605
@@ -2675,7 +2699,7 @@ GameObject:
   - component: {fileID: 2128979221}
   - component: {fileID: 2128979223}
   - component: {fileID: 2128979222}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Break_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2807,6 +2831,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1185701467}
-  - {fileID: 256115515}
   - {fileID: 377225652}
+  - {fileID: 256115515}
   - {fileID: 640583656}
