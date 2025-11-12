@@ -10,10 +10,12 @@ public class Pomodoro : MonoBehaviour
     [SerializeField] private float timerStart =1500.0f;
     [SerializeField] private float breakTimerStart = 300.0f;
     [SerializeField] private float countdownSpeed = 1f;
+    private bool isTimerPaused = false;
 
     [Header("Timer UI")]
     [SerializeField] private TextMeshProUGUI timerText = null;
     [SerializeField] private Button pauseButton;
+    [SerializeField] private TextMeshProUGUI pauseText;
     [SerializeField] private Button breakButton;
     [SerializeField] private Button focusButtonn;
     [SerializeField] private GameObject pomodorPanel;
@@ -99,5 +101,14 @@ public class Pomodoro : MonoBehaviour
         sunsetBackground.SetActive(true);
         breakPanel.SetActive(false);
         starlightBackground.SetActive(false);
+    }
+
+    public void pausePlayTime()
+    {
+        isTimerPaused = !isTimerPaused;
+        if (isTimerPaused)
+            pauseText.text = "|>";
+        else
+            pauseText.text = "||";
     }
 }
