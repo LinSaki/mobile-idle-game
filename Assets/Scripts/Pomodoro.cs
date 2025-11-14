@@ -26,8 +26,6 @@ public class Pomodoro : MonoBehaviour
     private void Start()
     {
         timerRoutine = StartCoroutine(CountdownCoroutine());
-        userTimerInput.onValueChanged.AddListener(UpdatePomodoroCalculationText);
-        userBreakInput.onValueChanged.AddListener(UpdatePomodoroCalculationText);
         userBreakAmountInput.onValueChanged.AddListener(UpdatePomodoroCalculationText);
     }
     public void StartToFocus()
@@ -54,10 +52,7 @@ public class Pomodoro : MonoBehaviour
         string inputText = inputField.text;
 
         if (float.TryParse(inputText, out float value))
-        {
-            value *= 60;
             return value;
-        }
         else
         {
             Debug.Log("Conversion failed. Input is not a number: " + inputText);
@@ -65,11 +60,17 @@ public class Pomodoro : MonoBehaviour
         }
     }
 
+    private float ConvertFloatToSeconds(float value)
+    {
+        return value * 60; //convert to seconds
+    }
+
     private void PomodoroTime()
     {
         float userTimer = ConvertTexttoFloat(userTimerInput);
+        userTimer = ConvertFloatToSeconds(userTimer);
         if (userTimer <= 0)
-            userTimer = 1500.0f;
+            userTimer = 900.0f; //automate 15min
         remainingTime = userTimer;
         UpdateTimerText();
         timerRoutine = StartCoroutine(CountdownCoroutine());
@@ -78,8 +79,9 @@ public class Pomodoro : MonoBehaviour
     private void BreakTime()
     {
         float userBreak = ConvertTexttoFloat(userBreakInput);
+        userBreak = ConvertFloatToSeconds(userBreak);
         if (userBreak <= 0)
-            userBreak = 300.0f;
+            userBreak = 300.0f; //automate 5min
         remainingTime = userBreak;
         UpdateTimerText();
         timerRoutine = StartCoroutine(CountdownCoroutine());
@@ -100,12 +102,26 @@ public class Pomodoro : MonoBehaviour
 
      private void UpdatePomodoroCalculationText(string value)
     {
-        calculationsText.text = " __ focus sessions that are __ long \r\nwith \r\n__ break sessions that are __ long";
+        calculationsText.text = value;
     }
 
-    private void PomodoroCalculations()
+    public void PomodoroCalculations()
     {
 
+        float focusValue = ConvertTexttoFloat(userTimerInput);
+        float breakValue = ConvertTexttoFloat(userBreakInput);
+        float breakNum = ConvertTexttoFloat(userBreakAmountInput);
+
+        //math for focus lenght of each session
+        float focusTime = (focusValue - (breakValue * breakNum)) / breakNum;
+        string focusLengthText = focusTime.ToString("F0");
+
+        string calcText = breakNum + " focus session(s) that are " + focusLengthText + "min long \r\nwith \r\n"+ breakNum + " break session(s) that are "+ breakValue + " min long";
+        Debug.Log("Focus Valuue: " + focusValue);
+        Debug.Log("Break Value: " + breakValue);
+
+        Debug.Log("Calculations: " + calcText);
+        UpdatePomodoroCalculationText(calcText);
     }
 
     private void TimerFinished()
