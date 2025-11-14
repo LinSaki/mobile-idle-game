@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,8 +8,6 @@ using UnityEngine.UI;
 public class Pomodoro : MonoBehaviour
 {
     [Header("Timer Controls")]
-    [SerializeField] private float timerStart =1500.0f;
-    [SerializeField] private float breakTimerStart = 300.0f;
     [SerializeField] private float countdownSpeed = 1f;
     private bool isTimerPaused = false;
 
@@ -16,18 +15,23 @@ public class Pomodoro : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText = null;
     [SerializeField] private Button pauseButton;
     [SerializeField] private TextMeshProUGUI pauseText;
-    [SerializeField] private Button breakButton;
-    [SerializeField] private Button focusButtonn;
-    [SerializeField] private GameObject pomodorPanel;
-    [SerializeField] private GameObject breakPanel;
-    [SerializeField] private GameObject sunsetBackground;
-    [SerializeField] private GameObject starlightBackground;
+
+    [Header("User Input")]
+    [SerializeField] private TMP_InputField userTimerInput;
+    [SerializeField] private TMP_InputField userBreakInput;
+    [SerializeField] private TMP_InputField userRoundsInput;
+
     Coroutine timerRoutine = null;
 
     private float remainingTime;
 
     private void Start()
     {
+        timerRoutine = StartCoroutine(CountdownCoroutine());
+    }
+    public void StartToFocus()
+    {
+        Level.instance.setPanelAfterInput();
         PomodoroTime();
     }
 
@@ -41,16 +45,37 @@ public class Pomodoro : MonoBehaviour
         }
     }
 
+    private float ConvertTexttoFloat(TMP_InputField inputField) 
+    {
+        string inputText = inputField.text;
+
+        if (float.TryParse(inputText, out float value))
+        {
+            return value;
+        }
+        else
+        {
+            Debug.Log("Conversion failed. Input is not a number: " + inputText);
+            return 0;
+        }
+    }
+
     private void PomodoroTime()
     {
-        remainingTime = timerStart;
+        float userTimer = ConvertTexttoFloat(userTimerInput);
+        if (userTimer <= 0)
+            userTimer = 1500.0f;
+        remainingTime = userTimer;
         UpdateTimerText();
         timerRoutine = StartCoroutine(CountdownCoroutine());
     }
 
     private void BreakTime()
     {
-        remainingTime = breakTimerStart;
+        float userBreak = ConvertTexttoFloat(userBreakInput);
+        if (userBreak <= 0)
+            userBreak = 300.0f;
+        remainingTime = userBreak;
         UpdateTimerText();
         timerRoutine = StartCoroutine(CountdownCoroutine());
     }
@@ -72,32 +97,16 @@ public class Pomodoro : MonoBehaviour
     {
         Debug.Log("Timer finished!");
         StopCoroutine(timerRoutine);
-        if (pomodorPanel.activeInHierarchy == true)
+        if (Level.instance.getActivePanel().activeInHierarchy == true)
         {
-            setBreakPanel();
+            Level.instance.setBreakPanel();
             BreakTime();
         }
         else
         {
-            setPomodoroBackground();
+            Level.instance.setPomodoroBackground();
             PomodoroTime();
         }
-    }
-
-    private void setBreakPanel()
-    {
-        pomodorPanel.SetActive(false);
-        sunsetBackground.SetActive(false);
-        breakPanel.SetActive(true);
-        starlightBackground.SetActive(true);
-    }
-
-    private void setPomodoroBackground()
-    {
-        pomodorPanel.SetActive(true);
-        sunsetBackground.SetActive(true);
-        breakPanel.SetActive(false);
-        starlightBackground.SetActive(false);
     }
 
     public void pausePlayTime()
