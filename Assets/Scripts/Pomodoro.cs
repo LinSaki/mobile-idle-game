@@ -14,17 +14,21 @@ public class Pomodoro : MonoBehaviour
 
     [Header("Timer UI")]
     [SerializeField] private TextMeshProUGUI timerText = null;
+    [SerializeField] private TextMeshProUGUI calculationsText = null;
     [SerializeField] private Button pauseButton;
     [SerializeField] private TextMeshProUGUI pauseText;
 
     [Header("User Input")]
     [SerializeField] private TMP_InputField userTimerInput;
     [SerializeField] private TMP_InputField userBreakInput;
-    [SerializeField] private TMP_InputField userRoundsInput;
+    [SerializeField] private TMP_InputField userBreakAmountInput;
 
     private void Start()
     {
         timerRoutine = StartCoroutine(CountdownCoroutine());
+        userTimerInput.onValueChanged.AddListener(UpdatePomodoroCalculationText);
+        userBreakInput.onValueChanged.AddListener(UpdatePomodoroCalculationText);
+        userBreakAmountInput.onValueChanged.AddListener(UpdatePomodoroCalculationText);
     }
     public void StartToFocus()
     {
@@ -92,6 +96,16 @@ public class Pomodoro : MonoBehaviour
     private void UpdateTimerText()
     {
         timerText.text = FormatTime(remainingTime);
+    }
+
+     private void UpdatePomodoroCalculationText(string value)
+    {
+        calculationsText.text = " __ focus sessions that are __ long \r\nwith \r\n__ break sessions that are __ long";
+    }
+
+    private void PomodoroCalculations()
+    {
+
     }
 
     private void TimerFinished()
