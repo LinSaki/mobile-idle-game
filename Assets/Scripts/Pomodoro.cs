@@ -51,6 +51,7 @@ public class Pomodoro : MonoBehaviour
 
         if (float.TryParse(inputText, out float value))
         {
+            value *= 60;
             return value;
         }
         else
