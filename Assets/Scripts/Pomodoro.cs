@@ -22,6 +22,7 @@ public class Pomodoro : MonoBehaviour
     [SerializeField] private TMP_InputField userTimerInput;
     [SerializeField] private TMP_InputField userBreakInput;
     [SerializeField] private TMP_InputField userBreakAmountInput;
+    private float focusLengths;
 
     private void Start()
     {
@@ -112,15 +113,10 @@ public class Pomodoro : MonoBehaviour
         float breakValue = ConvertTexttoFloat(userBreakInput);
         float breakNum = ConvertTexttoFloat(userBreakAmountInput);
 
-        //math for focus lenght of each session
-        float focusTime = (focusValue - (breakValue * breakNum)) / breakNum;
-        string focusLengthText = focusTime.ToString("F0");
+        //math for focus length of each session
+        focusLengths = (focusValue - (breakValue * breakNum)) / breakNum;
 
-        string calcText = breakNum + " focus session(s) that are " + focusLengthText + "min long \r\nwith \r\n"+ breakNum + " break session(s) that are "+ breakValue + " min long";
-        Debug.Log("Focus Valuue: " + focusValue);
-        Debug.Log("Break Value: " + breakValue);
-
-        Debug.Log("Calculations: " + calcText);
+        string calcText = breakNum + " focus session(s) that are " + focusLengths + "min long \r\nwith \r\n"+ breakNum + " break session(s) that are "+ breakValue + " min long";
         UpdatePomodoroCalculationText(calcText);
     }
 
