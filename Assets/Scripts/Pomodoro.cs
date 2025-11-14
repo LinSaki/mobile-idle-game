@@ -8,8 +8,9 @@ using UnityEngine.UI;
 public class Pomodoro : MonoBehaviour
 {
     [Header("Timer Controls")]
-    [SerializeField] private float countdownSpeed = 1f;
     private bool isTimerPaused = false;
+    private float remainingTime;
+    Coroutine timerRoutine = null;
 
     [Header("Timer UI")]
     [SerializeField] private TextMeshProUGUI timerText = null;
@@ -20,10 +21,6 @@ public class Pomodoro : MonoBehaviour
     [SerializeField] private TMP_InputField userTimerInput;
     [SerializeField] private TMP_InputField userBreakInput;
     [SerializeField] private TMP_InputField userRoundsInput;
-
-    Coroutine timerRoutine = null;
-
-    private float remainingTime;
 
     private void Start()
     {
@@ -37,11 +34,14 @@ public class Pomodoro : MonoBehaviour
 
     IEnumerator CountdownCoroutine()
     {
-        while(remainingTime > 0)
+        while (remainingTime > 0)
         {
-            yield return new WaitForSeconds(countdownSpeed);
-            remainingTime -= countdownSpeed;
-            UpdateTimerText();
+            if (!isTimerPaused)
+            {
+                remainingTime = Mathf.Max(remainingTime - Time.deltaTime, 0f); //time never goes below 0
+                UpdateTimerText();
+            }
+            yield return null;  // wait 1 frame
         }
     }
 
@@ -96,7 +96,6 @@ public class Pomodoro : MonoBehaviour
 
     private void TimerFinished()
     {
-        Debug.Log("Timer finished!");
         StopCoroutine(timerRoutine);
         if (Level.instance.getActivePanel().activeInHierarchy == true)
         {
@@ -119,7 +118,16 @@ public class Pomodoro : MonoBehaviour
             pauseText.text = "||";
     }
 
-    public void StartPomodoro() => TimerFinished();
-
-    public void StartBreak() => TimerFinished();
+    public void StartPomodoro()
+    {
+        if (remainingTime > 0)
+            Debug.Log("Focus time started earlier.");
+        TimerFinished();
+    }
+    public void StartBreak() 
+    {
+        if (remainingTime > 0)
+            Debug.Log("Break time started earlier.");
+        TimerFinished();
+    }
 }
