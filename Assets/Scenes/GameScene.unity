@@ -2124,8 +2124,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 542.55, y: 206.91}
-  m_SizeDelta: {x: 238.337, y: 90.274}
+  m_AnchoredPosition: {x: 460, y: 368.85}
+  m_SizeDelta: {x: 255.605, y: 88.083}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &444717167
 MonoBehaviour:
@@ -2988,7 +2988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: math
+  m_text: calculate
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96a6ed2b689d0dd4aaf732004c02c998, type: 2}
   m_sharedMaterial: {fileID: 5721470319669401257, guid: 96a6ed2b689d0dd4aaf732004c02c998, type: 2}
@@ -3015,7 +3015,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 48.85
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3053,7 +3053,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 37.41272, y: 0, z: 28.779137, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3324,7 +3324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000024796, y: 23}
+  m_AnchoredPosition: {x: -147.58, y: 23.002}
   m_SizeDelta: {x: 914.122, y: 88.083}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960068340
@@ -4655,7 +4655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000030517578, y: 28}
+  m_AnchoredPosition: {x: -0.000011214, y: 36}
   m_SizeDelta: {x: 419.645, y: 90.274}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1546835633
@@ -5009,8 +5009,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000072249, y: -137.841}
-  m_SizeDelta: {x: 1146, y: 187.596}
+  m_AnchoredPosition: {x: 2.3283e-10, y: -141}
+  m_SizeDelta: {x: 1146, y: 210.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1585221966
 MonoBehaviour:
@@ -5032,8 +5032,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: " __ focus sessions that are __ long \nwith \n__ break sessions that are
-    __ long"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96a6ed2b689d0dd4aaf732004c02c998, type: 2}
   m_sharedMaterial: {fileID: 5721470319669401257, guid: 96a6ed2b689d0dd4aaf732004c02c998, type: 2}
@@ -5060,7 +5059,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.55
+  m_fontSize: 140
   m_fontSizeBase: 140
   m_fontWeight: 400
   m_enableAutoSizing: 1

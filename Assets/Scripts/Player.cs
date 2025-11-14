@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
     [Header("Player details")]
     private string playerName;
     private string dateOfBirth;
@@ -9,15 +10,12 @@ public class Player : MonoBehaviour
     [Header("Movement details")]
     [SerializeField] float movementSpeed = 1.0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Header("Pomodoro details")]
+    private float focusTimeTotal;
+    private float completedNumOfPomodoro;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        instance = this;
     }
 }

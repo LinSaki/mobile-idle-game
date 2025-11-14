@@ -23,15 +23,17 @@ public class Pomodoro : MonoBehaviour
     [SerializeField] private TMP_InputField userBreakInput;
     [SerializeField] private TMP_InputField userBreakAmountInput;
     private float focusLengths;
+    private float numOfSessions;
+    private float sessionCount = 0f;
 
     private void Start()
     {
         timerRoutine = StartCoroutine(CountdownCoroutine());
-        userBreakAmountInput.onValueChanged.AddListener(UpdatePomodoroCalculationText);
     }
+
     public void StartToFocus()
     {
-        Level.instance.setPanelAfterInput();
+        Level.instance.SetPanelAfterInput();
         PomodoroTime();
     }
 
@@ -68,8 +70,7 @@ public class Pomodoro : MonoBehaviour
 
     private void PomodoroTime()
     {
-        float userTimer = ConvertTexttoFloat(userTimerInput);
-        userTimer = ConvertFloatToSeconds(userTimer);
+        float userTimer = ConvertFloatToSeconds(focusLengths);
         if (userTimer <= 0)
             userTimer = 900.0f; //automate 15min
         remainingTime = userTimer;
@@ -111,26 +112,26 @@ public class Pomodoro : MonoBehaviour
 
         float focusValue = ConvertTexttoFloat(userTimerInput);
         float breakValue = ConvertTexttoFloat(userBreakInput);
-        float breakNum = ConvertTexttoFloat(userBreakAmountInput);
+        numOfSessions = ConvertTexttoFloat(userBreakAmountInput);
 
         //math for focus length of each session
-        focusLengths = (focusValue - (breakValue * breakNum)) / breakNum;
+        focusLengths = (focusValue - (breakValue * numOfSessions)) / numOfSessions;
 
-        string calcText = breakNum + " focus session(s) that are " + focusLengths + "min long \r\nwith \r\n"+ breakNum + " break session(s) that are "+ breakValue + " min long";
+        string calcText = numOfSessions + " focus session(s) that are " + focusLengths + " min long \r\nwith \r\n"+ numOfSessions + " break session(s) that are "+ breakValue + " min long";
         UpdatePomodoroCalculationText(calcText);
     }
 
     private void TimerFinished()
     {
         StopCoroutine(timerRoutine);
-        if (Level.instance.getActivePanel().activeInHierarchy == true)
+        if (Level.instance.GetActivePanel().activeInHierarchy == true)
         {
-            Level.instance.setBreakPanel();
+            Level.instance.SetBreakPanel();
             BreakTime();
         }
         else
         {
-            Level.instance.setPomodoroBackground();
+            Level.instance.SetPomodoroBackground();
             PomodoroTime();
         }
     }
@@ -146,14 +147,31 @@ public class Pomodoro : MonoBehaviour
 
     public void StartPomodoro()
     {
-        if (remainingTime > 0)
-            Debug.Log("Focus time started earlier.");
-        TimerFinished();
+        if (sessionCount < numOfSessions)
+        {
+            if (remainingTime > 0)
+                Debug.Log("Focus time started earlier.");
+            TimerFinished();
+        }
+        else
+            FinishedPomodoro();
     }
     public void StartBreak() 
     {
         if (remainingTime > 0)
             Debug.Log("Break time started earlier.");
+        if (remainingTime == 0)
+        {
+            sessionCount++;
+            Debug.Log("Session count: " + sessionCount);
+        }
         TimerFinished();
+    }
+
+    private void FinishedPomodoro()
+    {
+        Debug.Log("Finished a complete Pomodoro!");
+        sessionCount = 0;
+        Level.instance.StartUpPanel();
     }
 }

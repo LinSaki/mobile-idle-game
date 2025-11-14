@@ -16,7 +16,7 @@ public class Level : MonoBehaviour
     {
         instance = this;
     }
-    public void setBreakPanel()
+    public void SetBreakPanel()
     {
         pomodorPanel.SetActive(false);
         sunsetBackground.SetActive(false);
@@ -24,7 +24,7 @@ public class Level : MonoBehaviour
         starlightBackground.SetActive(true);
     }
 
-    public void setPomodoroBackground()
+    public void SetPomodoroBackground()
     {
         pomodorPanel.SetActive(true);
         sunsetBackground.SetActive(true);
@@ -32,15 +32,25 @@ public class Level : MonoBehaviour
         starlightBackground.SetActive(false);
     }
 
-    public GameObject getActivePanel()
+    public GameObject GetActivePanel()
     {
         return pomodorPanel;
     }
 
-    public void setPanelAfterInput()
+    public void SetPanelAfterInput()
     {
         userInputPanel.SetActive(false);
         timerPanels.SetActive(true);
-        setPomodoroBackground();
+        SetPomodoroBackground();
+    }
+
+    public void StartUpPanel()
+    {
+        pomodorPanel.SetActive(false);
+        sunsetBackground.SetActive(true);
+        breakPanel.SetActive(false);
+        starlightBackground.SetActive(false);
+        timerPanels.SetActive(false);
+        userInputPanel.SetActive(true);
     }
 }
