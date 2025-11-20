@@ -24,6 +24,7 @@ public class Pomodoro : MonoBehaviour
     [SerializeField] private TMP_InputField userBreakInput;
     [SerializeField] private TMP_InputField userBreakAmountInput;
     [SerializeField] Player player;
+    [SerializeField] private TextMeshProUGUI playerTotalTimeText = null;
     private float focusLengths;
     private float numOfSessions;
     private float sessionCount = 0f;
@@ -32,6 +33,7 @@ public class Pomodoro : MonoBehaviour
     {
         instance = this;
         timerRoutine = StartCoroutine(CountdownCoroutine());
+        playerTotalTimeText.text = "Your Total Focus: " + player.GetFocusTimeTotal() + " min";
     }
 
     public void StartToFocus()
@@ -166,6 +168,7 @@ public class Pomodoro : MonoBehaviour
         {
             sessionCount++;
             player.AddToFocusTimeTotal();
+            playerTotalTimeText.text = "Your Total Focus: " + player.GetFocusTimeTotal() + " min";
             Debug.Log("Session count: " + sessionCount);
         }
         TimerFinished();

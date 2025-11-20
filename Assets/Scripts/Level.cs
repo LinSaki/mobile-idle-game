@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     [SerializeField] private GameObject pomodorPanel;
     [SerializeField] private GameObject breakPanel;
     [SerializeField] private GameObject userInputPanel;
+    [SerializeField] private GameObject userSavedDataPanel;
     [SerializeField] private GameObject sunsetBackground;
     [SerializeField] private GameObject starlightBackground;
 
@@ -41,6 +42,7 @@ public class Level : MonoBehaviour
     {
         userInputPanel.SetActive(false);
         timerPanels.SetActive(true);
+        userSavedDataPanel.SetActive(false);
         SetPomodoroBackground();
     }
 
@@ -52,5 +54,6 @@ public class Level : MonoBehaviour
         starlightBackground.SetActive(false);
         timerPanels.SetActive(false);
         userInputPanel.SetActive(true);
+        userSavedDataPanel.SetActive(true);
     }
 }
