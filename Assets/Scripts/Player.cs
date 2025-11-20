@@ -7,15 +7,12 @@ public class Player : MonoBehaviour
     private string playerName;
     private string dateOfBirth;
 
-    [Header("Movement details")]
-    [SerializeField] float movementSpeed = 1.0f;
-
     [Header("Pomodoro details")]
     private float focusTimeTotal;
-    private float completedNumOfPomodoro;
 
-    void Awake()
+    public void AddToFocusTimeTotal()
     {
-        instance = this;
+        focusTimeTotal += Pomodoro.instance.GetFocusLength();
+        Debug.Log("Total focus time to date: " + focusTimeTotal + " mins");
     }
 }

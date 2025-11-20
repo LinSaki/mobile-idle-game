@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Pomodoro : MonoBehaviour
 {
+    public static Pomodoro instance;
     [Header("Timer Controls")]
     private bool isTimerPaused = false;
     private float remainingTime;
@@ -22,12 +23,14 @@ public class Pomodoro : MonoBehaviour
     [SerializeField] private TMP_InputField userTimerInput;
     [SerializeField] private TMP_InputField userBreakInput;
     [SerializeField] private TMP_InputField userBreakAmountInput;
+    [SerializeField] Player player;
     private float focusLengths;
     private float numOfSessions;
     private float sessionCount = 0f;
 
     private void Start()
     {
+        instance = this;
         timerRoutine = StartCoroutine(CountdownCoroutine());
     }
 
@@ -50,7 +53,7 @@ public class Pomodoro : MonoBehaviour
         }
     }
 
-    private float ConvertTexttoFloat(TMP_InputField inputField) 
+    public float ConvertTexttoFloat(TMP_InputField inputField) 
     {
         string inputText = inputField.text;
 
@@ -63,7 +66,7 @@ public class Pomodoro : MonoBehaviour
         }
     }
 
-    private float ConvertFloatToSeconds(float value)
+    public float ConvertFloatToSeconds(float value)
     {
         return value * 60; //convert to seconds
     }
@@ -96,7 +99,6 @@ public class Pomodoro : MonoBehaviour
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-   
     private void UpdateTimerText()
     {
         timerText.text = FormatTime(remainingTime);
@@ -163,6 +165,7 @@ public class Pomodoro : MonoBehaviour
         if (remainingTime == 0)
         {
             sessionCount++;
+            player.AddToFocusTimeTotal();
             Debug.Log("Session count: " + sessionCount);
         }
         TimerFinished();
@@ -173,5 +176,10 @@ public class Pomodoro : MonoBehaviour
         Debug.Log("Finished a complete Pomodoro!");
         sessionCount = 0;
         Level.instance.StartUpPanel();
+    }
+
+    public float GetFocusLength()
+    {
+        return focusLengths;
     }
 }

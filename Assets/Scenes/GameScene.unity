@@ -481,7 +481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e57e4ff9851ce84aa46b92766b76775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
 --- !u!4 &256115515
 Transform:
   m_ObjectHideFlags: 0
@@ -1573,6 +1572,7 @@ MonoBehaviour:
   userTimerInput: {fileID: 1415481179}
   userBreakInput: {fileID: 444287747}
   userBreakAmountInput: {fileID: 356485783}
+  player: {fileID: 256115514}
 --- !u!114 &377225649
 MonoBehaviour:
   m_ObjectHideFlags: 0
