@@ -168,7 +168,7 @@ public class Pomodoro : MonoBehaviour
         {
             sessionCount++;
             player.AddToFocusTimeTotal();
-            playerTotalTimeText.text = "Your Total Focus: " + player.GetFocusTimeTotal() + " min";
+            playerTotalTimeText.text = "Your Total Focus Today: " + player.GetFocusTimeTotal() + " min";
             Debug.Log("Session count: " + sessionCount);
         }
         TimerFinished();
